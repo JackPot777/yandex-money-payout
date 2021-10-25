@@ -40,7 +40,7 @@ class ReportOfRequest
     /**
      * @return mixed
      */
-    public function getClientOrderId(): int
+    public function getClientOrderId(): string
     {
         return $this->clientOrderId;
     }

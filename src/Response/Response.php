@@ -17,7 +17,7 @@ final class Response
     {
         $this->status = $rawResponse['status'];
         $this->error = $rawResponse['error'] ?? null;
-        $this->balance = $rawResponse['balance'];
+        $this->balance = (float)$rawResponse['balance'];
         $this->processedDT = $rawResponse['processedDT'];
         $this->identification = $rawResponse['identification'] ?? null;
         $this->techMessage = $rawResponse['techMessage'] ?? null;

@@ -283,11 +283,11 @@ php artisan vendor:publish --tag= yandex-payouts
 resolve
 
 ```php
-  $phone = new \YandexPayout\Accounts\YandexPurse(app(Settings::class), app(GeneratorClientOrderId::class));
-  $phone->setDstAccount('4100116075156746');
-  $phone->setAmount(1);
-  $phone->setContract('Тестовый платеж');
-  dd($phone->sendIncrementId(), $phone->getReport());
+  $yandexPurse = new \YandexPayout\Accounts\YandexPurse(app(Settings::class), app(GeneratorClientOrderId::class));
+  $yandexPurse->setDstAccount('4100116075156746');
+  $yandexPurse->setAmount(1);
+  $yandexPurse->setContract('Тестовый платеж');
+  dd($yandexPurse->sendIncrementId(), $yandexPurse->getReport());
 ```
 
 <a name="extra"></a>

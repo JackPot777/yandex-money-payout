@@ -28,8 +28,8 @@ class ReportOfRequest
         $this->amount = $reportable->toReport()['amount'];
         $this->dstAccount = $reportable->toReport()['dstAccount'];
         $this->contract = $reportable->toReport()['contract'];
-        $this->agentId = $reportable->toReport()['agentId'];
-        $this->currency = $reportable->toReport()['currency'];
+        $this->agentId = (int)$reportable->toReport()['agentId'];
+        $this->currency = (int)$reportable->toReport()['currency'];
     }
 
     public function response(): Response

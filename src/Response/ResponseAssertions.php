@@ -13,7 +13,7 @@ class ResponseAssertions
      */
     protected $rawResponse;
 
-    protected function isSuccessRequest(): bool
+    public function isSuccessRequest(): bool
     {
         if (intval($this->rawResponse['status']) == PayoutAPI::REQ_STATUS_SUCCESS) {
             return true;

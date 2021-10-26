@@ -8,6 +8,7 @@
     - [Начисление на телефон](#phone)
     - [Начисление на яндекс кошелек](#yandex-purse)
     - [Структура ответа](#report)
+    - [Обработка ошибок](#error)
     - [Интеграция с Laravel](#laravel)
 
 - [Дополнительный материалы](#extra)
@@ -247,6 +248,31 @@ composer require agoalofalife/yandex-money-payout
     }
 ```
 
+<a name="error"></a>
+
+## Обработка ошибок
+В процессе работы с yandex - могут возникнуть ошибки:
+- Внутренния ошибка яндекс
+- Проблемы с мобильным телефоном
+- Истек сертификат
+
+И так далее..
+
+Запросы `send` или `sendIncrementId` возвращают bool в случае успеха.
+Для более читабельного варианта можно использовать `isSuccessRequest`
+
+```php
+// ....
+    $phone->sendIncrementId(); 
+ if ($phone->isSuccessRequest()) {
+    // save storage
+ } else {
+   $phone->getReport()->response()->getStatus();// самостоятельная обработка
+   $phone->getReport()->response()->getError();// код ошибка
+ }
+```
+ 
+Перечень кодов можно прочитать [тут](https://yookassa.ru/docs/payouts/api/reference/errors)
 <a name="laravel"></a>
 
 ## Интеграция с Laravel

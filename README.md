@@ -312,7 +312,7 @@ php artisan vendor:publish --tag= yandex-payouts
     'agentId'        => env('YANDEX_MONEY_PAYOUT_AGENT_ID', ''),
     'certPassword'   => env('YANDEX_MONEY_PAYOUT_CERT_PASSWORD', ''),
     'cert' => env('YANDEX_MONEY_PAYOUT_CERT', ''),
-     // абсолютный путь 200000.pem
+     // абсолютный путь keys.pem
     'privateKey' => env('YANDEX_MONEY_PAYOUT_CERT_PRIVATE', ''),
     // абсолютный путь private.pem
     'yaCert' => env('YANDEX_MONEY_PAYOUT_CERT_REQUEST', ''), 

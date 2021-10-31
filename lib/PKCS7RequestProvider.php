@@ -45,7 +45,6 @@ class PKCS7RequestProvider implements IDispositionRequestProvider
             CURLOPT_SSL_VERIFYPEER => false,
             CURLOPT_CONNECTTIMEOUT => 30,
             CURLOPT_SSLCERT        => $this->settings->cert,
-            CURLOPT_SSLKEY         => $this->settings->privateKey,
             CURLOPT_SSLCERTPASSWD  => $this->settings->certPassword,
             CURLOPT_SSL_VERIFYHOST => false,
             CURLOPT_VERBOSE        => 0,

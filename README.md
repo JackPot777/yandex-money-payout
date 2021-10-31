@@ -80,27 +80,47 @@ composer require agoalofalife/yandex-money-payout
 <a name="settings"></a>
 
 ## Настройка сертификатов и данных
+#### agentId
+Получите у менеджера agentId — идентификатор вашего шлюза в ЮKassa.
+
+#### cert
+Это комбирированный ключ - вам надо выполнить несколько команд:
+
+```shell
+openssl pkcs12 -export -out cert.p12 -in 201111.pem -inkey private.pem
+```
+201111.pem - это обычно 201111.cer - просто переименуйте
+private.pem - это приватный ключ который создаете вы до отправки в yandex
+
+После команды вы получите `cert.p12`
+
+Надо будет выполнить следующую команду:
+
+```shell
+openssl pkcs12 -in cert.p12 -out keys.pem -nodes
+```
+В итоге вы получите `keys.pem` - который и надо вставить в параметр `cert`
+(Абсолютный путь до него)
+
+#### certPassword
+Пароль от сертификата privateKey
+
+### privateKey
+Абсолютный путь до файла - приватный ключ - который создается на вашей стороне.
+Вот ссылка [как](https://yookassa.ru/docs/payouts/api/using-api/security#creating-private-key)
+  
+### yaCert
+бсолютный путь до файла -
+сертификакт который отправляется в яндекс вместе с заявкой
+request.cer => нужен в расширении .cer ссылка на него из [документации](https://yookassa.ru/docs/payouts/api/using-api/security#creating-csr)
 
 ```php
   $settings = new Settings();
   $settings->agentId = '';
-  // Получите у менеджера agentId — идентификатор вашего шлюза в ЮKassa.
-  $settings->cert = '201111.pem';
-  // абсолютный путь до файла - сертификат который
-  // присылает яндекс в конце по почте -
-  // обычно такое название 201111.cer => 201111.pem надо изменить на pem
+  $settings->cert = 'keys.pem';
   $settings->certPassword = '';
-  // пароль от сертификата privateKey
-  $settings->privateKey = '';
-  // абсолютный путь до файла - приватный ключ - который создается на 
-  // вашей стороне,
-  // вот ссылка как
-  // https://yookassa.ru/docs/payouts/api/using-api/security#creating-private-key
-  // private.pem => ожидается в расширении .pem
-  $settings->yaCert = ''; // абсолютный путь до файла -
-  // сертификакт который отправляется в яндекс вместе с заявкой
-  //request.cer => нужен в расширении .cer ссылка на него
-  // https://yookassa.ru/docs/payouts/api/using-api/security#creating-csr
+  $settings->privateKey = 'private.pem';
+  $settings->yaCert = '';
 ```
 
 <a name="generatorId"></a>

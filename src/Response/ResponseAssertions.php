@@ -15,7 +15,10 @@ class ResponseAssertions
 
     public function isSuccessRequest(): bool
     {
-        if (intval($this->rawResponse['status']) == PayoutAPI::REQ_STATUS_SUCCESS) {
+        if (
+            is_null($this->rawResponse) === false &&
+            intval($this->rawResponse['status']) == PayoutAPI::REQ_STATUS_SUCCESS
+        ) {
             return true;
         }
         return false;

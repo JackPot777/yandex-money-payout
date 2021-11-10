@@ -111,9 +111,7 @@ openssl pkcs12 -in cert.p12 -out keys.pem -nodes
 Вот ссылка [как](https://yookassa.ru/docs/payouts/api/using-api/security#creating-private-key)
   
 ### yaCert
-бсолютный путь до файла -
-сертификакт который отправляется в яндекс вместе с заявкой
-request.cer => нужен в расширении .cer ссылка на него из [документации](https://yookassa.ru/docs/payouts/api/using-api/security#creating-csr)
+Абсолютный путь до файла - сертификат для расшифровки сообщение от сервера Яндекса
 
 ```php
   $settings = new Settings();

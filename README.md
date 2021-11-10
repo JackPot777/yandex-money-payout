@@ -89,7 +89,8 @@ composer require agoalofalife/yandex-money-payout
 ```shell
 openssl pkcs12 -export -out cert.p12 -in 201111.pem -inkey private.pem
 ```
-201111.pem - это обычно 201111.cer - просто переименуйте
+201111.pem - это обычно 201111.cer (просто переименуйте) - сертификат отправляется Яндексом
+
 private.pem - это приватный ключ который создаете вы до отправки в yandex
 
 После команды вы получите `cert.p12`

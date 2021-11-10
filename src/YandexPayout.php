@@ -81,7 +81,7 @@ abstract class YandexPayout extends ResponseAssertions implements Reportable
 
     public function getReport(): ReportOfRequest
     {
-        return new ReportOfRequest(new Response($this->rawResponse), $this);
+        return new ReportOfRequest(new Response($this->rawResponse ?? []), $this);
     }
 
     public function send(): bool
